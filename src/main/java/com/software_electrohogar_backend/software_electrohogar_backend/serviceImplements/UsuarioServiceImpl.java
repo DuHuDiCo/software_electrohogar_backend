@@ -17,36 +17,26 @@ public class UsuarioServiceImpl implements UsuarioService{
 
     @Override
     public Usuario guardarUsuario(Usuario usuario) throws Exception {
-        Usuario usuarioLocal = usuarioRepository.findByUsername(usuario.getUsername());
-        if(usuarioLocal != null){
+        boolean usuarioLocal = usuarioRepository.existsByUsername(usuario.getUsername());
+        Usuario user = null;
+        if(usuarioLocal == true){
             throw new UsuarioFoundException("El Usuario ya existe");
         }else{
-            usuarioLocal = usuarioRepository.save(usuario);
+            user = usuarioRepository.save(usuario);
            
         }
-        return usuarioLocal;
-    }
-
-    @Override
-    public Usuario obtenerUsuario(String username) {
-        return usuarioRepository.findByUsername(username);
-    }
-
-    //pendiente por terminar
-    @Override
-    public Usuario editarUsuario(Usuario usuario) {
-        Usuario user = usuarioRepository.findByUsername(usuario.getUsername());
         return user;
     }
 
     @Override
-    public void eliminarUsuario(String usuario) {
-        usuarioRepository.deleteById(usuario);
+    public Boolean existByUsername(String username) {
+        return usuarioRepository.existsByUsername(username);
     }
 
     @Override
-    public Optional<Usuario> obtenerUsuarioById(String id) {
-        return usuarioRepository.findById(id);
+    public Boolean existByEmail(String email) {
+        return usuarioRepository.existsByEmail(email);
     }
 
+   
 }

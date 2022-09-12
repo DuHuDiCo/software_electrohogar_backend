@@ -4,14 +4,12 @@ package com.software_electrohogar_backend.software_electrohogar_backend.models;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
-
-@Document
+@Document(collection = "roles")
 public class Rol {
+    
     @Id
     private String id;
-    private String nombre_rol;
-    
-    private Usuario usuario;
+    private ERol nombre;
 
     public Rol() {
     }
@@ -24,26 +22,14 @@ public class Rol {
         this.id = id;
     }
 
-    public String getNombre_rol() {
-        return nombre_rol;
+    public Enum getNombre() {
+        return nombre;
     }
 
-    public void setNombre_rol(String nombre_rol) {
-        this.nombre_rol = nombre_rol;
-    }
-
-    public Usuario getUsuario() {
-        return usuario;
-    }
-
-    public void setUsuario(Usuario usuario) {
-        this.usuario = usuario;
+    public void setNombre(ERol nombre) {
+        this.nombre = nombre;
     }
     
     
     
-    
-     
-    
-
 }

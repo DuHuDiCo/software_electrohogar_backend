@@ -1,18 +1,16 @@
 
-package com.software_electrohogar_backend.software_electrohogar_backend.models;
+package com.software_electrohogar_backend.software_electrohogar_backend.payload.request;
+
+import javax.validation.constraints.NotBlank;
 
 
-public class JwtRequest {
-    
+public class LoginRequest {
+    @NotBlank
     private String username;
+    @NotBlank
     private String password;
 
-    public JwtRequest() {
-    }
-
-    public JwtRequest(String username, String password) {
-        this.username = username;
-        this.password = password;
+    public LoginRequest() {
     }
 
     public String getUsername() {

@@ -1,65 +1,23 @@
 
-package com.software_electrohogar_backend.software_electrohogar_backend.models;
+package com.software_electrohogar_backend.software_electrohogar_backend.payload.request;
 
 import java.util.HashSet;
 import java.util.Set;
-import javax.validation.constraints.NotBlank;
-import javax.validation.constraints.Size;
-import org.springframework.data.annotation.Id;
-import org.springframework.data.mongodb.core.mapping.DBRef;
-import org.springframework.data.mongodb.core.mapping.Document;
 
-@Document(collection = "usuarios")
-public class Usuario {
+
+public class SignupRequest {
     
-    @Id
-    private String id;
-    @NotBlank
-    @Size(max = 20)
     private String username;
-    @NotBlank
-    @Size(max = 255)
     private String password;
-    
-    @NotBlank
-    @Size(max = 20)
     private String nombre;
-    @NotBlank
-    @Size(max = 20)
     private String apellido;
-    @NotBlank
-    @Size(max = 50)
     private String email;
-    @NotBlank
-    @Size(max = 20)
     private String telefono;
-    @NotBlank
     private boolean enabled = true;
     
-    @DBRef
-    private Set<Rol> roles = new HashSet<>();
+    private Set<String> roles = new HashSet<>();
 
-    public Usuario() {
-    }
-
-    public Usuario(String id, String username, String password, String nombre, String apellido, String email, String telefono) {
-        this.id = id;
-        this.username = username;
-        this.password = password;
-        this.nombre = nombre;
-        this.apellido = apellido;
-        this.email = email;
-        this.telefono = telefono;
-    }
-    
-    
-
-    public String getId() {
-        return id;
-    }
-
-    public void setId(String id) {
-        this.id = id;
+    public SignupRequest() {
     }
 
     public String getUsername() {
@@ -118,15 +76,13 @@ public class Usuario {
         this.enabled = enabled;
     }
 
-    public Set<Rol> getRoles() {
+    public Set<String> getRoles() {
         return roles;
     }
 
-    public void setRoles(Set<Rol> roles) {
+    public void setRoles(Set<String> roles) {
         this.roles = roles;
     }
-
-    
     
     
 
