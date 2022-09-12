@@ -1,6 +1,9 @@
 
 package com.software_electrohogar_backend.software_electrohogar_backend.DTOS;
 
+import java.util.ArrayList;
+import java.util.List;
+
 
 public class UsuarioDto {
     
@@ -11,6 +14,8 @@ public class UsuarioDto {
     private String apellido;
     private String email;
     private String telefono;
+    
+    private List<RolDTO> roles = new ArrayList<>();
 
     public UsuarioDto() {
     }
@@ -62,6 +67,16 @@ public class UsuarioDto {
     public void setTelefono(String telefono) {
         this.telefono = telefono;
     }
+
+    public List<RolDTO> getRoles() {
+        return roles;
+    }
+
+    public void setRoles(List<RolDTO> roles) {
+        this.roles = roles;
+    }
+    
+    
     
     
 

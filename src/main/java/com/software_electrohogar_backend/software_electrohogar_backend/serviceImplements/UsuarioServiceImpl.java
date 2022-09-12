@@ -5,7 +5,9 @@ import com.software_electrohogar_backend.software_electrohogar_backend.exception
 import com.software_electrohogar_backend.software_electrohogar_backend.models.Usuario;
 import com.software_electrohogar_backend.software_electrohogar_backend.repository.UsuarioRepository;
 import com.software_electrohogar_backend.software_electrohogar_backend.services.UsuarioService;
+import java.util.List;
 import java.util.Optional;
+import java.util.Set;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -31,6 +33,7 @@ public class UsuarioServiceImpl implements UsuarioService{
     @Override
     public Boolean existByUsername(String username) {
         return usuarioRepository.existsByUsername(username);
+        
     }
 
     @Override
@@ -38,5 +41,16 @@ public class UsuarioServiceImpl implements UsuarioService{
         return usuarioRepository.existsByEmail(email);
     }
 
+    @Override
+    public List<Usuario> obtenerUsuarios() {
+        return usuarioRepository.findAll();
+    }
+
+    @Override
+    public Optional<Usuario> obtenerUsuarioById(String id) {
+        return usuarioRepository.findById(id);
+    }
+
+    
    
 }
